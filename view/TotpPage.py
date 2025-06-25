@@ -42,15 +42,15 @@ class TotpPage(tk.Frame):
         self.canvas.configure(scrollregion=self.canvas.bbox("all"))
 
     def load_token(self,totps_list):
-        
-        for totp_dict in totps_list:
-            kid = totp_dict["kid"]
-           
-            uri = totp_dict["uri"]
-            plataform = totp_dict["plataform"]
-            emailOrUser = totp_dict["emailOrUser"]
-            totp_number = self.controller.totp_number_controller(uri)
-            self._creating_ballons(kid=kid,platform=plataform,user=emailOrUser,uri=uri,totp_number=totp_number)
+        if totps_list != None:
+            for totp_dict in totps_list:
+                kid = totp_dict["kid"]
+            
+                uri = totp_dict["uri"]
+                plataform = totp_dict["plataform"]
+                emailOrUser = totp_dict["emailOrUser"]
+                totp_number = self.controller.totp_number_controller(uri)
+                self._creating_ballons(kid=kid,platform=plataform,user=emailOrUser,uri=uri,totp_number=totp_number)
 
     def add_token(self):
         platform = simpledialog.askstring("Plataforma", "Digite a plataforma:")
